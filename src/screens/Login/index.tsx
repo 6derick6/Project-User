@@ -82,7 +82,6 @@ const Login = () => {
                     />
                 </div>
                 <button type="submit" className="btn btn-primary btn_acessar">Entrar</button>
-                <button type="submit" className="btn btn-primary btn_cadastro">Cadastrar</button>
             </form>
 
             </div>
