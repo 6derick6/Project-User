@@ -3,13 +3,14 @@ import './style.css';
 import Home from '../Home-Page';
 import Login from '../Login';
 
+
 interface IFormState {
   email: string;
   password: string;
   repeat_password: string;
 }
 
-const Cadastro = () => {
+const Cadastro = ({setActiveScreen}) => {
 
   const [formState, setFormState] = useState<IFormState>({
     email: "",
@@ -83,6 +84,9 @@ const Cadastro = () => {
                     })
                     }
                 />
+                <div id="passwordHelpBlock" className="form-text">
+                  Sua senha deve conter no mínimo 8 caracteres, um número, uma letra maiúscula e um caractere especial.
+              </div>
             </div>
             <div className="mb-3">
             <label htmlFor="exampleInputPassword1" className="form-label">Repita sua Senha</label>
@@ -105,11 +109,11 @@ const Cadastro = () => {
             
         </form>
 
-        <button type="submit" className="btn btn-primary btn_cadastro" onLoad={<Login />}={}>Já sou Usuário</button>
+        <button type="submit" onClick={() => setActiveScreen('Login')} className="btn btn-primary btn_cadastro">Já sou Usuário</button>
 
         </div>
     </div>    
-</div>        
+  </div>        
 );
 };
 

@@ -1,8 +1,16 @@
 import React, { useCallback, useState } from 'react';
 import './style.css';
 import Home from '../Home-Page';
+import { users } from '../../data/users';
 
 interface IFormState {
+  email: string;
+  password: string;
+}
+
+
+interface users {
+  id: number;
   email: string;
   password: string;
 }
@@ -14,6 +22,8 @@ const Login = () => {
     password: "",
   });
 
+
+  const [tries, setTries] = useState(0);
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
@@ -29,7 +39,26 @@ const Login = () => {
 
       setIsLoggedIn(false);
 
+    /*  let login = false;
+      for(let i = 0; i < users.length; i++) {
+        if(users.email === email && users.password === password) {
+          login = true;
+        }
+      }*/
+
+
       return;
+    } else {
+      if(tries >= 3) {
+        alert('espere 30 segundos para tentar novamente')
+        //disabilita os campos
+        setTimeout(() => {  
+          //habilita os campos
+          setTries(0);
+        }, 30000)
+      } else {
+        setTries(state => (state + 1));
+      }
     }
 
     setIsLoggedIn(true);
